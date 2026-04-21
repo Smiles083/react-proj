@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/NavBar";
 import FoodCard from "../components/FoodCard";
 import ProductCard from "../components/ProductCard";
+import Loading from "../components/Loading";
 import Img1 from "../assets/food1.jpg";
 import Img2 from "../assets/food2.jpg";
 import Img3 from "../assets/food3.jpg";
@@ -12,7 +13,7 @@ import Img7 from "../assets/food7.jpg";
 
 const FoodPage = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
 
@@ -148,7 +149,7 @@ const FoodPage = () => {
           }}
         >
           {loading ? (
-            <p>Loading products...</p>
+            <Loading />
           ) : (
             filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
